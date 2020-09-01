@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Controller;
+
+use App\Service\GetCodeService;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+
+class GetCodeController
+{
+    public function handle(Request $request, Response $response, $args): Response
+    {
+        $email = $request->getQueryParams()['email'];
+        $password = $request->getQueryParams()['password'];
+        $emailServer = $request->getQueryParams()['emailServer'];
+        $getCodeService = new GetCodeService($email, $password, $emailServer);
+
+        $response->getBody()->write($getCodeService->getCode(25, 2));
+
+        return $response;
+    }
+}

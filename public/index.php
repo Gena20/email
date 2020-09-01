@@ -1,15 +1,15 @@
 <?php
 
-use App\Controller\HomeController;
+use App\Controller\GetCodeController;
 use Slim\Factory\AppFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 
-$app->addErrorMiddleware(true, true, true);
+$app->addErrorMiddleware(false, true, true);
 
-$app->get('/get-code', HomeController::class . ':handle');
-$app->post('/get-code', HomeController::class . ':handle');
+$app->get('/get-code', GetCodeController::class . ':handle');
+$app->post('/get-code', GetCodeController::class . ':handle');
 
 $app->run();
