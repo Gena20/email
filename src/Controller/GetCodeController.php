@@ -13,9 +13,10 @@ class GetCodeController
         $email = $request->getQueryParams()['email'];
         $password = $request->getQueryParams()['password'];
         $emailServer = $request->getQueryParams()['emailServer'];
-        $getCodeService = new GetCodeService($email, $password, $emailServer);
+        $socialMedia = $request->getQueryParams()['sm'];
+        $getCodeService = new GetCodeService($email, $password, $emailServer, $socialMedia);
 
-        $response->getBody()->write($getCodeService->getCode(25, 2));
+        $response->getBody()->write($getCodeService->getCode(1, 0));
 
         return $response;
     }

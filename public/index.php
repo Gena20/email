@@ -7,7 +7,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 
-$app->addErrorMiddleware(false, true, true);
+// $app->addErrorMiddleware(true, true, true);
 
 $app->get('/get-code', GetCodeController::class . ':handle');
 $app->post('/get-code', GetCodeController::class . ':handle');
